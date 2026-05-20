@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SuperClick - Login</title>
+    <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="container cabecalho__interno">
+            <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+            <nav class="cabecalho__navegacao">
+                <a class="cabecalho__link" href="index.html">Mercearia</a>
+                <a class="cabecalho__link" href="drogaria.html">Drogaria</a>
+                <a class="cabecalho__link" href="sobre.html">Sobre Nós</a>
+                <a class="cabecalho__link" href="contato.html">Contato</a>
+            </nav>
+
+            <div class="cabecalho__auth">
+                <a class="botao botao--primario" href="login.html">Login</a>
+                <a class="botao botao--secundario" href="registro.html">Registro</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="login" class="hero">
+            <h1 class="hero__titulo">Login</h1>
+            <p class="hero__subtitulo">Entre para continuar</p>
+        </section>
+
+        <section class="filtros">
+            <div class="filtros__grade">
+                <div class="filtro auth__card">
+                    <h2 class="filtro__titulo">Acesse sua conta</h2>
+
+                    <form class="auth__form" action="#" method="POST">
+                        <div class="contato__grid">
+                            <div class="contato__campo">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" placeholder="Digite seu e-mail" required />
+                            </div>
+
+                            <div class="contato__campo">
+                                <label for="password">Senha</label>
+                                <input id="password" name="password" type="password" placeholder="Digite sua senha"
+                                    required />
+                            </div>
+
+                            <div class="auth__registro">
+                                <span>Não tem conta?</span>
+                                <a href="registro.html">Criar Conta</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

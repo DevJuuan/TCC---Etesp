@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SuperClick - Registro</title>
+    <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="container cabecalho__interno">
+            <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+            <nav class="cabecalho__navegacao">
+                <a class="cabecalho__link" href="index.html">Mercearia</a>
+                <a class="cabecalho__link" href="drogaria.html">Drogaria</a>
+                <a class="cabecalho__link" href="sobre.html">Sobre Nós</a>
+                <a class="cabecalho__link" href="contato.html">Contato</a>
+            </nav>
+
+            <div class="cabecalho__auth">
+                <a class="botao botao--primario" href="login.html">Login</a>
+                <a class="botao botao--secundario" href="registro.html">Registro</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="registro" class="hero">
+            <h1 class="hero__titulo">Registro</h1>
+            <p class="hero__subtitulo">Crie sua conta</p>
+        </section>
+
+        <section class="filtros">
+            <div class="filtros__grade">
+                <div class="filtro auth__card">
+                    <h2 class="filtro__titulo">Informações da conta</h2>
+
+                    <form class="auth__form" action="#" method="POST">
+                        <div class="contato__grid">
+                            <div class="contato__campo">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+                            </div>
+
+                            <div class="contato__campo">
+                                <label for="cpf">CPF</label>
+                                <input type="number" id="cpf" name="cpf" placeholder="Digite seu CPF" required />
+                            </div>
+
+                            <div class="contato__campo">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
+                            </div>
+
+                            <div class="contato__campo">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required />
+                            </div>
+
+                            <div class="contato__campo">
+                                <label for="confirmar">Confirmar Senha</label>
+                                <input type="password" id="confirmar" name="confirmar" placeholder="Repita sua senha"
+                                    required />
+                            </div>
+
+                            <div class="auth__acoes auth__acoes--registro">
+                                <button class="botao botao--secundario" type="submit" onclick="VerificaSenha()">Criar Conta</button>
+                            </div>
+
+                            <div class="auth__registro">
+                                <span>Já tem conta?</span>
+                                <a href="login.html">Entrar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

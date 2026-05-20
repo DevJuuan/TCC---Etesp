@@ -1,0 +1,534 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --texto: #111827;
+  --texto2: #6b7280;
+  --cor1: #16a34a;
+  --cor2: #0ea5e9;
+  --borda: rgba(15, 23, 42, 0.12);
+  --borda2: rgba(22, 163, 74, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    "Noto Sans",
+    sans-serif;
+  background: var(--bg);
+  color: var(--texto);
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(246, 247, 251, 0.92);
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.cabecalho__interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.cabecalho__logo {
+  display: block;
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.cabecalho__navegacao {
+  display: flex;
+  gap: 14px;
+}
+
+.cabecalho__link {
+  text-decoration: none;
+  color: var(--texto2);
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.cabecalho__link:hover {
+  background: rgba(14, 165, 233, 0.08);
+  color: var(--texto);
+}
+
+.cabecalho__auth {
+  display: flex;
+  gap: 8px;
+}
+
+.botao {
+  border: 1px solid var(--borda);
+  background: #fff;
+  color: var(--texto);
+  padding: 9px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.botao--primario {
+  border-color: var(--borda);
+  text-decoration: none;
+}
+
+.botao--secundario {
+  border-color: rgba(22, 163, 74, 0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(22, 163, 74, 0.15),
+    rgba(22, 163, 74, 0.05)
+  );
+  color: #0b6b2a;
+  text-decoration: none;
+}
+
+.botao:focus {
+  outline: 3px solid var(--borda2);
+  outline-offset: 2px;
+}
+
+.hero {
+  padding: 26px 0 10px;
+}
+
+.hero__titulo {
+  margin: 0 0 6px;
+  font-size: 40px;
+  font-weight: 1000;
+}
+
+.hero__subtitulo {
+  margin: 0;
+  color: var(--texto2);
+  font-weight: 600;
+}
+
+.filtros {
+  padding: 8px 0;
+}
+
+.filtro {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.filtro__titulo {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.produto__preco s {
+  color: gray;
+  text-decoration-thickness: 2px;
+}
+
+.categorias {
+  width: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.categoria__pill {
+  display: flex;
+  flex: 1 1 0;
+  text-align: center;
+  border: 1px solid var(--borda);
+  background: #fff;
+  color: var(--texto);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoria__pill--ativo {
+  border-color: rgba(14, 165, 233, 0.35);
+  background: rgba(14, 165, 233, 0.08);
+  box-shadow: 0 0 0 4px var(--borda2);
+}
+
+.resultados {
+  padding: 14px 0 44px;
+}
+
+.lista__produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.produto {
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.produto__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.etiqueta {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.1);
+  color: #0b6b2a;
+}
+
+.produto__marca {
+  color: var(--texto2);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.produto__nome {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.produto__imagem {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  image-rendering: auto;
+}
+
+.produto__descricao {
+  margin: 0;
+  color: var(--texto2);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.produto__linha-preco {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.produto__preco {
+  font-size: 15px;
+  font-weight: 1000;
+}
+
+.produto__meta {
+  color: var(--texto2);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.produto__btn {
+  border: none;
+  background: rgba(22, 163, 74, 0.12);
+  color: #0b6b2a;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: transform 0.7s ease;
+}
+.produto__btn:hover {
+  background-color: #0b6b2a;
+  border: 3px;
+  color: white;
+}
+
+/* Footer */
+
+.rodape {
+  background-color: white;
+  color: var(--texto2);
+  padding: 20px 0;
+  margin-top: 50px;
+}
+
+.rodape__conteudo {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rodape__logo {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.rodape__baixo {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Página Sobre */
+.sobre__conteudo {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.sobre__texto {
+  color: var(--texto);
+  line-height: 1.65;
+  margin: 0 0 18px;
+  font-size: 14.5px;
+}
+
+.sobre__texto__compacto {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 8px 12px;
+  border-radius: 7%;
+  font-size: 25px;
+  font-weight: 1000;
+  color: var(--texto);
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.sobre__conclusao {
+  font-weight: 800;
+  color: var(--texto);
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(22, 163, 74, 0.06);
+  border: 1px solid rgba(22, 163, 74, 0.18);
+}
+
+.sobre__contato {
+  color: var(--texto2);
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Página Contato */
+.contato__card {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.contato__titulo {
+  margin-bottom: 14px;
+}
+
+.contato__form {
+  width: 500px;
+}
+
+.contato__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.contato__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contato__campo label {
+  font-weight: 800;
+  color: var(--texto2);
+}
+
+.contato__campo input,
+.contato__campo textarea {
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 11px 12px;
+  background: #fff;
+  font-weight: 700;
+  color: var(--texto);
+  resize: none;
+}
+
+.contato__acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+/* Login / Registro */
+.auth__card {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.auth__form {
+  margin-top: 6px;
+}
+
+.auth__acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.auth__acoes--registro {
+  justify-content: flex-end;
+}
+
+.auth__link {
+  color: var(--texto2);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.auth__link:hover {
+  text-decoration: underline;
+}
+
+.auth__registro {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto2);
+  font-weight: 800;
+}
+
+.auth__registro a {
+  color: #0b6b2a;
+  text-decoration: none;
+  font-weight: 1000;
+}
+
+.auth__registro a:hover {
+  text-decoration: underline;
+}
+
+/* Media queries */
+@media (max-width: 960px) {
+  .lista__produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filtros__grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .cabecalho__interno {
+    flex-wrap: wrap;
+  }
+
+  .filtros__grade {
+    grid-template-columns: 1fr;
+  }
+
+  .rodape{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rodape__conteudo{
+    flex-direction: column;
+  }
+
+  .rodape__coluna{
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .rodape__conteudo {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .lista__produtos {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__titulo {
+    font-size: 32px;
+  }
+
+  .cabecalho__logo {
+    height: 70px;
+  }
+
+  /* Categorias devem caber na tela (sem vazar) */
+  .categorias {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .categoria__pill {
+    flex: 0 1 auto;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  /* Centralizar menu em telas pequenas */
+  .cabecalho__interno {
+    justify-content: center;
+  }
+
+  .cabecalho__navegacao {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cabecalho__auth {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .produto__imagem {
+    height: 130px;
+  }
+}
