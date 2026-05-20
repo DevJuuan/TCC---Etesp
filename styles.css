@@ -357,13 +357,15 @@ body {
 }
 
 .contato__form {
-  width: 500px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .contato__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
+  width: 100%;
 }
 
 .contato__campo {
@@ -392,12 +394,14 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: 6px;
+  flex-wrap: wrap;
 }
 
 /* Login / Registro */
 .auth__card {
   width: 50%;
-  margin: 0 auto;
+  margin: 50px auto;
+  max-width: 100%;
 }
 
 .auth__form {
@@ -410,6 +414,7 @@ body {
   align-items: center;
   gap: 12px;
   margin-top: 6px;
+  flex-wrap: wrap;
 }
 
 .auth__acoes--registro {
@@ -466,16 +471,16 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .rodape{
+  .rodape {
     display: flex;
     flex-direction: column;
   }
 
-  .rodape__conteudo{
+  .rodape__conteudo {
     flex-direction: column;
   }
 
-  .rodape__coluna{
+  .rodape__coluna {
     text-align: center;
   }
 }
@@ -488,6 +493,13 @@ body {
 }
 
 @media (max-width: 620px) {
+  .contato__campo input,
+  .contato__campo textarea,
+  .auth__form input {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .lista__produtos {
     grid-template-columns: 1fr;
   }
@@ -500,7 +512,6 @@ body {
     height: 70px;
   }
 
-  /* Categorias devem caber na tela (sem vazar) */
   .categorias {
     flex-wrap: wrap;
     justify-content: center;
@@ -512,7 +523,6 @@ body {
     white-space: normal;
   }
 
-  /* Centralizar menu em telas pequenas */
   .cabecalho__interno {
     justify-content: center;
   }
