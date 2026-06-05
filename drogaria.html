@@ -13,6 +13,10 @@
   <header class="cabecalho">
     <div class="container cabecalho__interno">
       <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+      <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
+        ☰
+      </button>
+
       <nav class="cabecalho__navegacao">
         <a class="cabecalho__link" href="index.html">Mercearia</a>
         <a class="cabecalho__link" href="drogaria.html">Drogaria</a>
@@ -20,21 +24,86 @@
         <a class="cabecalho__link" href="contato.html">Contato</a>
       </nav>
 
+
       <div class="cabecalho__auth">
         <a class="botao botao--primario" href="login.html">Login</a>
         <a class="botao botao--secundario" href="registro.html">Registro</a>
-        </button>
+        <button class="botao" type="button" id="carrinho__abrir" aria-label="Abrir carrinho">🛒</button>
       </div>
+
+      <!-- Menu mobile -->
+      <div class="menu-mobile__overlay" id="menu-mobile__overlay" aria-hidden="true">
+        <aside class="menu-mobile__painel" role="dialog" aria-modal="true" aria-label="Menu">
+          <div class="menu-mobile__cabecalho">
+            <h2 class="menu-mobile__titulo">Menu</h2>
+            <button type="button" class="menu-mobile__botao-fechar" id="menu-mobile__fechar" aria-label="Fechar menu">
+              ✕
+            </button>
+          </div>
+
+          <nav class="menu-mobile__links" aria-label="Links do menu">
+            <a class="menu-mobile__link" href="login.html">Login</a>
+            <a class="menu-mobile__link" href="registro.html">Registro</a>
+            <a class="menu-mobile__link" href="index.html">Mercearia</a>
+            <a class="menu-mobile__link" href="drogaria.html">Drogaria</a>
+            <a class="menu-mobile__link" href="contato.html">Contato</a>
+            <a class="menu-mobile__link" href="sobre.html">Sobre Nós</a>
+            <button type="button" class="menu-mobile__link menu-mobile__link--botao" id="menu-mobile__carrinho">
+              Carrinho 🛒
+            </button>
+          </nav>
+        </aside>
+      </div>
+
     </div>
   </header>
 
+
   <main class="container">
+
+    <!-- Carrinho -->
+    <div class="carrinho__overlay" id="janela-carrinho" aria-hidden="true">
+      <div class="carrinho__painel" role="dialog" aria-modal="true" aria-label="Seu carrinho">
+        <div class="carrinho__cabecalho">
+          <h2 class="carrinho__titulo">Seu Carrinho</h2>
+          <button type="button" class="carrinho__botao-fechar" id="carrinho__fechar"
+            aria-label="Fechar carrinho">✕</button>
+        </div>
+
+        <div class="carrinho__corpo">
+          <p class="carrinho__vazio" id="carrinho__vazio">Seu carrinho está vazio.</p>
+          <ul class="carrinho__lista" id="lista-carrinho"></ul>
+        </div>
+
+        <div class="carrinho__rodape">
+          <div class="carrinho__total">
+            <span>Total</span>
+            <strong id="valor-total">R$ 0,00</strong>
+          </div>
+          <div class="carrinho__acoes">
+            <button type="button" class="carrinho__btn" onclick="limparCarrinho()">Limpar</button>
+            <button type="button" class="carrinho__btn carrinho__btn--primario"
+              onclick="finalizarCompra()">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section id="ofertas" class="hero">
+
       <h1 id="titulo_ofertas" class="hero__titulo">Drogaria</h1>
       <p class="hero__subtitulo">
         Produtos de cuidado, higiene e proteção para deixar sua rotina mais segura.
       </p>
     </section>
+
+    <div class="cabecalho__busca" role="search">
+      <form class="cabecalho__busca-form" id="form-busca">
+        <label class="cabecalho__busca-label" for="cabecalho-busca">Buscar produto</label>
+        <input id="cabecalho-busca" class="cabecalho__busca-input" type="search"
+          placeholder="Buscar por nome ou marca..." autocomplete="off" />
+      </form>
+    </div>
 
     <section class="filtros">
       <div class="filtros__grade">
@@ -43,6 +112,7 @@
 
           <div class="categorias" role="navigation">
             <a class="categoria__pill" href="#" data-filtro="Todas">Todas</a>
+            <a class="categoria__pill" href="#" data-filtro="Medicamentos">Medicamentos</a>
             <a class="categoria__pill" href="#" data-filtro="Higiene Pessoal">Higiene Pessoal</a>
             <a class="categoria__pill" href="#" data-filtro="Cuidados Bucais">Cuidados Bucais</a>
             <a class="categoria__pill" href="#" data-filtro="Primeiros Socorros">Primeiros Socorros</a>

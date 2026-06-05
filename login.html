@@ -13,6 +13,10 @@
     <header class="cabecalho">
         <div class="container cabecalho__interno">
             <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+            <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
+                ☰
+            </button>
+
             <nav class="cabecalho__navegacao">
                 <a class="cabecalho__link" href="index.html">Mercearia</a>
                 <a class="cabecalho__link" href="drogaria.html">Drogaria</a>
@@ -20,10 +24,39 @@
                 <a class="cabecalho__link" href="contato.html">Contato</a>
             </nav>
 
+
             <div class="cabecalho__auth">
                 <a class="botao botao--primario" href="login.html">Login</a>
                 <a class="botao botao--secundario" href="registro.html">Registro</a>
+                <button class="botao" type="button" id="carrinho__abrir" aria-label="Abrir carrinho">🛒</button>
             </div>
+
+            <!-- Menu mobile -->
+            <div class="menu-mobile__overlay" id="menu-mobile__overlay" aria-hidden="true">
+                <aside class="menu-mobile__painel" role="dialog" aria-modal="true" aria-label="Menu">
+                    <div class="menu-mobile__cabecalho">
+                        <h2 class="menu-mobile__titulo">Menu</h2>
+                        <button type="button" class="menu-mobile__botao-fechar" id="menu-mobile__fechar"
+                            aria-label="Fechar menu">
+                            ✕
+                        </button>
+                    </div>
+
+                    <nav class="menu-mobile__links" aria-label="Links do menu">
+                        <a class="menu-mobile__link" href="login.html">Login</a>
+                        <a class="menu-mobile__link" href="registro.html">Registro</a>
+                        <a class="menu-mobile__link" href="index.html">Mercearia</a>
+                        <a class="menu-mobile__link" href="drogaria.html">Drogaria</a>
+                        <a class="menu-mobile__link" href="contato.html">Contato</a>
+                        <a class="menu-mobile__link" href="sobre.html">Sobre Nós</a>
+                        <button type="button" class="menu-mobile__link menu-mobile__link--botao"
+                            id="menu-mobile__carrinho">
+                            Carrinho 🛒
+                        </button>
+                    </nav>
+                </aside>
+            </div>
+
         </div>
     </header>
 
@@ -49,6 +82,10 @@
                                 <label for="password">Senha</label>
                                 <input id="password" name="password" type="password" placeholder="Digite sua senha"
                                     required />
+                            </div>
+
+                            <div class="auth__acoes auth__acoes--registro">
+                                <button class="botao botao--secundario" type="submit">Entrar</button>
                             </div>
 
                             <div class="auth__registro">
