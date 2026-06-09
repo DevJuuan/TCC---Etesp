@@ -241,7 +241,6 @@ function finalizarCompra() {
 
 carregarCarrinho();
 
-
 // =========================================================
 // 2.5. ATALHOS VISUAIS DO CARRINHO (vincula botões da UI)
 // =========================================================
@@ -260,24 +259,24 @@ carregarCarrinho();
   if (btnFechar) {
     btnFechar.addEventListener("click", () => fecharCarrinho());
   }
-  
+
   // Clique em “Adicionar ao Carrinho”
   document.addEventListener("click", (e) => {
     const alvo =
-    e.target && e.target.closest ? e.target.closest(".produto__btn") : null;
+      e.target && e.target.closest ? e.target.closest(".produto__btn") : null;
     if (!alvo) return;
-    
+
     const card = alvo.closest(".produto");
     if (!card) return;
-    
+
     const nome = card.querySelector(".produto__nome")?.innerText?.trim();
     const marca = card.querySelector(".produto__marca")?.innerText?.trim();
     const precoTexto = card.querySelector(".produto__preco")?.innerText?.trim();
-    
+
     if (!nome || !marca || !precoTexto) {
       return;
     }
-    
+
     adicionarProduto(nome, marca, precoTexto);
   });
 })();
@@ -288,6 +287,9 @@ carregarCarrinho();
   const btnAbrir = document.getElementById("menu-hamburguer");
   const btnFechar = document.getElementById("menu-mobile__fechar");
   const btnCarrinho = document.getElementById("menu-mobile__carrinho");
+
+  // O botão de carrinho foi removido do menu mobile (para não ficar dentro do painel).
+  // Este handler fica apenas para compatibilidade caso exista em alguma página antiga.
 
   if (!overlay) return;
 
@@ -342,7 +344,7 @@ carregarCarrinho();
 function VerificaSenha() {
   var senha = document.getElementById("senha").value;
   var confirmar = document.getElementById("confirmar").value;
-  
+
   if (senha !== confirmar) {
     alert("Confirmação de senha incorreta");
   }

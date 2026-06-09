@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -10,50 +15,7 @@
 </head>
 
 <body>
-    <header class="cabecalho">
-        <div class="container cabecalho__interno">
-            <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
-            <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
-                ☰
-            </button>
-
-            <nav class="cabecalho__navegacao">
-                <a class="cabecalho__link" href="index.html">Mercearia</a>
-                <a class="cabecalho__link" href="drogaria.html">Drogaria</a>
-                <a class="cabecalho__link" href="sobre.html">Sobre Nós</a>
-                <a class="cabecalho__link" href="contato.html">Contato</a>
-            </nav>
-
-            <div class="cabecalho__auth">
-                <a class="botao botao--primario" href="login.html">Login</a>
-                <a class="botao botao--secundario" href="registro.html">Registro</a>
-            </div>
-
-            <!-- Menu mobile -->
-            <div class="menu-mobile__overlay" id="menu-mobile__overlay" aria-hidden="true">
-                <aside class="menu-mobile__painel" role="dialog" aria-modal="true" aria-label="Menu">
-                    <div class="menu-mobile__cabecalho">
-                        <h2 class="menu-mobile__titulo">Menu</h2>
-                        <button type="button" class="menu-mobile__botao-fechar" id="menu-mobile__fechar"
-                            aria-label="Fechar menu">
-                            ✕
-                        </button>
-                    </div>
-
-                    <nav class="menu-mobile__links" aria-label="Links do menu">
-                        <a class="menu-mobile__link" href="login.html">Login</a>
-                        <a class="menu-mobile__link" href="registro.html">Registro</a>
-                        <a class="menu-mobile__link" href="index.html">Mercearia</a>
-                        <a class="menu-mobile__link" href="drogaria.html">Drogaria</a>
-                        <a class="menu-mobile__link" href="contato.html">Contato</a>
-                        <a class="menu-mobile__link" href="sobre.html">Sobre Nós</a>
-                        </button>
-                    </nav>
-                </aside>
-            </div>
-
-        </div>
-    </header>
+    <?php include __DIR__ . '/header.php'; ?>
 
     <main class="container">
         <section id="sobre" class="hero">
@@ -108,7 +70,6 @@
 
     <footer class="rodape">
         <div class="rodape__conteudo">
-
             <div class="rodape__coluna">
                 <h2 class="rodape__logo">SuperClick</h2>
                 <p class="rodape__texto">
@@ -116,14 +77,12 @@
                 </p>
             </div>
 
-
             <div class="rodape__coluna">
                 <h3 class="rodape__titulo">Localização</h3>
                 <p>Rua Exemplo, 123 - Centro</p>
                 <p>Segunda a sábado: 08h às 20h</p>
                 <p>Domingo: 08h às 13h</p>
             </div>
-
         </div>
 
         <div class="rodape__baixo">
@@ -131,7 +90,6 @@
             <p>Projeto desenvolvido para fins acadêmicos.</p>
         </div>
     </footer>
-
 
     <script src="script.js"></script>
 </body>
