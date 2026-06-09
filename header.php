@@ -7,8 +7,8 @@ $logado = !empty($_SESSION['logado']);
 $nome = $_SESSION['nome_cliente'] ?? '';
 $nome = mb_convert_case($nome, MB_CASE_TITLE, 'UTF-8');
 
-$botaoLogin = "<a class='botao botao--primario' href='login.php'>Login</a>";
-$botaoRegistro = "<a class='botao botao--secundario' href='registro.php'>Registro</a>";
+$botaoLogin = "<a class='botao botao--primario' href='login.php'>Entrar</a>";
+$botaoRegistro = "<a class='botao botao--secundario' href='registro.php'>Registrar</a>";
 
 $botaoUser = '';
 if ($logado) {
@@ -60,8 +60,8 @@ if ($logado) {
             <a class="menu-mobile__link" href="dados.php">
               <?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?></a>
           <?php } else { ?>
-            <a class="menu-mobile__link" href="login.php">Login</a>
-            <a class="menu-mobile__link" href="registro.php">Registro</a>
+            <a class="menu-mobile__link" href="login.php">Entrar</a>
+            <a class="menu-mobile__link" href="registro.php">Registrar</a>
           <?php } ?>
 
           <a class="menu-mobile__link" href="index.php">Mercearia</a>
