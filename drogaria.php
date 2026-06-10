@@ -1,84 +1,83 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 ?>
 <!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SuperClick - Drogaria</title>
-    <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SuperClick - Drogaria</title>
+  <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <?php include __DIR__ . '/header.php'; ?>
+  <?php include __DIR__ . '/header.php'; ?>
 
-    <main class="container">
-        <!-- Carrinho -->
-        <div class="carrinho__overlay" id="janela-carrinho" aria-hidden="true">
-            <div class="carrinho__painel" role="dialog" aria-modal="true" aria-label="Seu carrinho">
-                <div class="carrinho__cabecalho">
-                    <h2 class="carrinho__titulo">Seu Carrinho</h2>
-                    <button type="button" class="carrinho__botao-fechar" id="carrinho__fechar"
-                        aria-label="Fechar carrinho">✕</button>
-                </div>
-
-                <div class="carrinho__corpo">
-                    <p class="carrinho__vazio" id="carrinho__vazio">Seu carrinho está vazio.</p>
-                    <ul class="carrinho__lista" id="lista-carrinho"></ul>
-                </div>
-
-                <div class="carrinho__rodape">
-                    <div class="carrinho__total">
-                        <span>Total</span>
-                        <strong id="valor-total">R$ 0,00</strong>
-                    </div>
-                    <div class="carrinho__acoes">
-                        <button type="button" class="carrinho__btn" onclick="limparCarrinho()">Limpar</button>
-                        <button type="button" class="carrinho__btn carrinho__btn--primario"
-                            onclick="finalizarCompra()">Finalizar</button>
-                    </div>
-                </div>
-            </div>
+  <main class="container">
+    <!-- Carrinho -->
+    <div class="carrinho__overlay" id="janela-carrinho" aria-hidden="true">
+      <div class="carrinho__painel" role="dialog" aria-modal="true" aria-label="Seu carrinho">
+        <div class="carrinho__cabecalho">
+          <h2 class="carrinho__titulo">Seu Carrinho</h2>
+          <button type="button" class="carrinho__botao-fechar" id="carrinho__fechar"
+            aria-label="Fechar carrinho">✕</button>
         </div>
 
-        <section id="ofertas" class="hero">
-            <h1 id="titulo_ofertas" class="hero__titulo">Drogaria</h1>
-            <p class="hero__subtitulo">Produtos de cuidado, higiene e proteção para deixar sua rotina mais segura.</p>
-        </section>
-
-        <div class="cabecalho__busca" role="search">
-            <form class="cabecalho__busca-form" id="form-busca">
-                <label class="cabecalho__busca-label" for="cabecalho-busca">Buscar produto</label>
-                <input id="cabecalho-busca" class="cabecalho__busca-input" type="search"
-                    placeholder="Buscar por nome ou marca..." autocomplete="off" />
-            </form>
+        <div class="carrinho__corpo">
+          <p class="carrinho__vazio" id="carrinho__vazio">Seu carrinho está vazio.</p>
+          <ul class="carrinho__lista" id="lista-carrinho"></ul>
         </div>
 
-        <section class="filtros">
-            <div class="filtros__grade">
-                <div class="filtro">
-                    <h2 class="filtro__titulo">Categorias</h2>
+        <div class="carrinho__rodape">
+          <div class="carrinho__total">
+            <span>Total</span>
+            <strong id="valor-total">R$ 0,00</strong>
+          </div>
+          <div class="carrinho__acoes">
+            <button type="button" class="carrinho__btn" onclick="limparCarrinho()">Limpar</button>
+            <button type="button" class="carrinho__btn carrinho__btn--primario"
+              onclick="finalizarCompra()">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <div class="categorias" role="navigation">
-                        <a class="categoria__pill" href="#" data-filtro="Todas">Todas</a>
-                        <a class="categoria__pill" href="#" data-filtro="Medicamentos">Medicamentos</a>
-                        <a class="categoria__pill" href="#" data-filtro="Higiene Pessoal">Higiene Pessoal</a>
-                        <a class="categoria__pill" href="#" data-filtro="Cuidados Bucais">Cuidados Bucais</a>
-                        <a class="categoria__pill" href="#" data-filtro="Primeiros Socorros">Primeiros Socorros</a>
-                        <a class="categoria__pill" href="#" data-filtro="Acessórios de Saúde">Acessórios de Saúde</a>
-                        <a class="categoria__pill" href="#" data-filtro="Proteção e Cuidados">Proteção e Cuidados</a>
-                        <a class="categoria__pill" href="#" data-filtro="Cabelos">Cabelos</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="ofertas" class="hero">
+      <img class="banner" src="imagens/Drogaria/banner.png" />
+    </section>
 
-<section class="resultados">
+    <div class="cabecalho__busca" role="search">
+      <form class="cabecalho__busca-form" id="form-busca">
+        <label class="cabecalho__busca-label" for="cabecalho-busca">Buscar produto</label>
+        <input id="cabecalho-busca" class="cabecalho__busca-input" type="search"
+          placeholder="Buscar por nome ou marca..." autocomplete="off" />
+      </form>
+    </div>
+
+    <section class="filtros">
+      <div class="filtros__grade">
+        <div class="filtro">
+          <h2 class="filtro__titulo">Categorias</h2>
+
+          <div class="categorias" role="navigation">
+            <a class="categoria__pill" href="#" data-filtro="Todas">Todas</a>
+            <a class="categoria__pill" href="#" data-filtro="Medicamentos">Medicamentos</a>
+            <a class="categoria__pill" href="#" data-filtro="Higiene Pessoal">Higiene Pessoal</a>
+            <a class="categoria__pill" href="#" data-filtro="Cuidados Bucais">Cuidados Bucais</a>
+            <a class="categoria__pill" href="#" data-filtro="Primeiros Socorros">Primeiros Socorros</a>
+            <a class="categoria__pill" href="#" data-filtro="Acessórios de Saúde">Acessórios de Saúde</a>
+            <a class="categoria__pill" href="#" data-filtro="Proteção e Cuidados">Proteção e Cuidados</a>
+            <a class="categoria__pill" href="#" data-filtro="Cabelos">Cabelos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resultados">
       <div class="lista__produtos" id="lista_produtos">
         <article class="produto" data-categoria="Acessórios de Saúde">
           <div class="produto__top">
@@ -147,6 +146,24 @@ if (session_status() === PHP_SESSION_NONE) {
           <div class="produto__linha-preco">
             <div>
               <div class="produto__preco">R$ 18,99</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+
+        <article class="produto" data-categoria="Medicamentos">
+          <div class="produto__top">
+            <span class="etiqueta">Medicamentos</span>
+            <div class="produto__marca">Prati</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/dipirona.webp" alt="Dipirona Monoidratada" />
+          <h3 class="produto__nome">Dipirona Monoidratada 1g</h3>
+          <p class="produto__descricao">Analgésico (para dor) e antitérmico (para febre)</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco">R$ 19,70</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -226,6 +243,25 @@ if (session_status() === PHP_SESSION_NONE) {
           <div class="produto__linha-preco">
             <div>
               <div class="produto__preco">R$ 16,99</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+
+        
+        <article class="produto" data-categoria="Medicamentos">
+          <div class="produto__top">
+            <span class="etiqueta">Medicamentos</span>
+            <div class="produto__marca">Cimegripe</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/cimegripe.png" alt="Antigripal Cimegripe" />
+          <h3 class="produto__nome">Antigripal 10 Cápsulas</h3>
+          <p class="produto__descricao">Para gripes e resfriados</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco">R$ 8,90</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -402,31 +438,31 @@ if (session_status() === PHP_SESSION_NONE) {
         </article>
       </div>
     </section>
-    </main>
+  </main>
 
-    <footer class="rodape">
-        <div class="rodape__conteudo">
-            <div class="rodape__coluna">
-                <h2 class="rodape__logo">SuperClick</h2>
-                <p class="rodape__texto">Qualidade, economia e praticidade para sua casa, com produtos de mercado e
-                    drogaria em um só lugar.</p>
-            </div>
+  <footer class="rodape">
+    <div class="rodape__conteudo">
+      <div class="rodape__coluna">
+        <h2 class="rodape__logo">SuperClick</h2>
+        <p class="rodape__texto">Qualidade, economia e praticidade para sua casa, com produtos de mercado e
+          drogaria em um só lugar.</p>
+      </div>
 
-            <div class="rodape__coluna">
-                <h3 class="rodape__titulo">Localização</h3>
-                <p>Rua Exemplo, 123 - Centro</p>
-                <p>Segunda a sábado: 08h às 20h</p>
-                <p>Domingo: 08h às 13h</p>
-            </div>
-        </div>
+      <div class="rodape__coluna">
+        <h3 class="rodape__titulo">Localização</h3>
+        <p>Rua Exemplo, 123 - Centro</p>
+        <p>Segunda a sábado: 08h às 20h</p>
+        <p>Domingo: 08h às 13h</p>
+      </div>
+    </div>
 
-        <div class="rodape__baixo">
-            <p>&copy; 2026 SuperClick Supermercado. Todos os direitos reservados.</p>
-            <p>Projeto desenvolvido para fins acadêmicos.</p>
-        </div>
-    </footer>
+    <div class="rodape__baixo">
+      <p>&copy; 2026 SuperClick Supermercado. Todos os direitos reservados.</p>
+      <p>Projeto desenvolvido para fins acadêmicos.</p>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

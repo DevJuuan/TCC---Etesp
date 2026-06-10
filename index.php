@@ -48,8 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
 
         <section id="ofertas" class="hero">
-            <h1 id="titulo_ofertas" class="hero__titulo">Mercearia</h1>
-            <p class="hero__subtitulo">Encontre os melhores produtos da nossa mercearia para sua casa.</p>
+            <img class="banner" src="imagens/Mercearia/banner.png"/>
         </section>
 
         <div class="cabecalho__busca" role="search">

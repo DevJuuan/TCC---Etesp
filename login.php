@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
     try {
         $pdo = conectar();
 
-        // Busca no banco de dados APENAS pelo e-mail
+        // Busca no banco de dados pelo e-mail
         $sql = $pdo->prepare("SELECT * FROM cliente WHERE email = :email");
         $sql->bindValue(":email", $email_digitado);
         $sql->execute();

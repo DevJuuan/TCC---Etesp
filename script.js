@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cards.forEach((card) => {
       const categoria = card.getAttribute("data-categoria");
       const nome = normalizar(card.querySelector(".produto__nome")?.innerText);
-      const marca = normalizar(
-        card.querySelector(".produto__marca")?.innerText,
-      );
+      const marca = normalizar(card.querySelector(".produto__marca")?.innerText,);
 
       const atendeCategoria =
         filtroCategoriaAtual === "Todas" || filtroCategoriaAtual === categoria;
@@ -169,12 +167,11 @@ function adicionarProduto(nome, marca, precoTexto) {
 
   salvarCarrinho();
 
-  // Indicador visual: abre carrinho só se já estiver visível.
+  // Indicador visual abre carrinho só se já estiver visível.
   const overlay = document.getElementById("janela-carrinho");
   if (overlay && overlay.classList.contains("carrinho__overlay--aberto")) {
     desenharCarrinho();
   } else {
-    // toast simples sem abrir o carrinho
     mostrarToast(`${nome} adicionado ao carrinho`);
   }
 }
@@ -241,20 +238,16 @@ function finalizarCompra() {
 
 carregarCarrinho();
 
-// =========================================================
-// 2.5. ATALHOS VISUAIS DO CARRINHO (vincula botões da UI)
-// =========================================================
 (function () {
   const btnAbrir = document.getElementById("carrinho__abrir");
   if (btnAbrir) {
     btnAbrir.addEventListener("click", () => {
-      // pode ser que exista ou não um overlay no HTML
       const el = document.getElementById("janela-carrinho");
       if (el) abrirCarrinho();
     });
   }
 
-  // Botão de fechar (se existir)
+  // Botão de fechar 
   const btnFechar = document.getElementById("carrinho__fechar");
   if (btnFechar) {
     btnFechar.addEventListener("click", () => fecharCarrinho());
@@ -287,9 +280,6 @@ carregarCarrinho();
   const btnAbrir = document.getElementById("menu-hamburguer");
   const btnFechar = document.getElementById("menu-mobile__fechar");
   const btnCarrinho = document.getElementById("menu-mobile__carrinho");
-
-  // O botão de carrinho foi removido do menu mobile (para não ficar dentro do painel).
-  // Este handler fica apenas para compatibilidade caso exista em alguma página antiga.
 
   if (!overlay) return;
 
