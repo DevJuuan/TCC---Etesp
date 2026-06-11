@@ -88,18 +88,15 @@ function formatarDinheiro(valor) {
 
 function abrirCarrinho() {
   const overlay = document.getElementById("janela-carrinho");
-
   overlay.style.display = "flex";
   overlay.setAttribute("aria-hidden", "false");
   overlay.classList.add("carrinho__overlay--aberto");
-
   desenharCarrinho();
 }
 
 function fecharCarrinho() {
   const overlay = document.getElementById("janela-carrinho");
   if (!overlay) return;
-
   overlay.style.display = "none";
   overlay.setAttribute("aria-hidden", "true");
   overlay.classList.remove("carrinho__overlay--aberto");
@@ -111,7 +108,6 @@ function desenharCarrinho() {
   const vazio = document.getElementById("carrinho__vazio");
 
   if (!lista || !textoTotal) return;
-
   lista.innerHTML = "";
   if (vazio) vazio.style.display = "none";
 
@@ -164,10 +160,8 @@ function adicionarProduto(nome, marca, precoTexto) {
     };
     carrinho.push(novoItem);
   }
-
   salvarCarrinho();
 
-  // Indicador visual abre carrinho só se já estiver visível.
   const overlay = document.getElementById("janela-carrinho");
   if (overlay && overlay.classList.contains("carrinho__overlay--aberto")) {
     desenharCarrinho();
@@ -253,7 +247,7 @@ carregarCarrinho();
     btnFechar.addEventListener("click", () => fecharCarrinho());
   }
 
-  // Clique em “Adicionar ao Carrinho”
+  // Clique em Adicionar ao Carrinho
   document.addEventListener("click", (e) => {
     const alvo =
       e.target && e.target.closest ? e.target.closest(".produto__btn") : null;

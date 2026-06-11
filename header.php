@@ -15,7 +15,7 @@ if ($logado) {
   $botaoLogin = '';
   $botaoRegistro = '';
   $nomeEscapado = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
-  $botaoUser = '<a class="botao" href="dados.php"  style=text-decoration:none;>' . $nome . '</a>';
+  $botaoUser = '<a class="botao" href="dados.php"  style=text-decoration:none;>' . $nomeEscapado. '</a>';
 
 }
 ?>
