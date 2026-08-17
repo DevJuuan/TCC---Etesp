@@ -1,101 +1,75 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 ?>
 <!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SuperClick - Mercearia</title>
-    <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SuperClick - Home</title>
+  <link rel="icon" type="image/x-icon" href="imagens/Ico-Mercearia.ico">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <?php include __DIR__ . '/header.php'; ?>
+  <?php include __DIR__ . '/header.php'; ?>
 
-    <main class="container">
-
-        <!-- Carrinho -->
-        <div class="carrinho__overlay" id="janela-carrinho" aria-hidden="true">
-            <div class="carrinho__painel" role="dialog" aria-modal="true" aria-label="Seu carrinho">
-                <div class="carrinho__cabecalho">
-                    <h2 class="carrinho__titulo">Seu Carrinho</h2>
-                    <button type="button" class="carrinho__botao-fechar" id="carrinho__fechar"
-                        aria-label="Fechar carrinho">✕</button>
-                </div>
-
-                <div class="carrinho__corpo">
-                    <p class="carrinho__vazio" id="carrinho__vazio">Seu carrinho está vazio.</p>
-                    <ul class="carrinho__lista" id="lista-carrinho"></ul>
-                </div>
-
-                <div class="carrinho__rodape">
-                    <div class="carrinho__total">
-                        <span>Total</span>
-                        <strong id="valor-total">R$ 0,00</strong>
-                    </div>
-                    <div class="carrinho__acoes">
-                        <button type="button" class="carrinho__btn" onclick="limparCarrinho()">Limpar</button>
-                        <button type="button" class="carrinho__btn carrinho__btn--primario"
-                            onclick="finalizarCompra()">Finalizar</button>
-                    </div>
-                </div>
-            </div>
+  <main class="container">
+    <!-- Carrinho -->
+    <div class="carrinho__overlay" id="janela-carrinho" aria-hidden="true">
+      <div class="carrinho__painel" role="dialog" aria-modal="true" aria-label="Seu carrinho">
+        <div class="carrinho__cabecalho">
+          <h2 class="carrinho__titulo">Seu Carrinho</h2>
+          <button type="button" class="carrinho__botao-fechar" id="carrinho__fechar"
+            aria-label="Fechar carrinho">✕</button>
         </div>
 
-        <section id="ofertas" class="hero">
-            <img class="banner" src="imagens/Mercearia/banner.png"/>
-        </section>
-
-        <div class="cabecalho__busca" role="search">
-            <form class="cabecalho__busca-form" id="form-busca">
-                <label class="cabecalho__busca-label" for="cabecalho-busca">Buscar produto</label>
-                <input id="cabecalho-busca" class="cabecalho__busca-input" type="search"
-                    placeholder="Buscar por nome ou marca..." autocomplete="off" />
-            </form>
+        <div class="carrinho__corpo">
+          <p class="carrinho__vazio" id="carrinho__vazio">Seu carrinho está vazio.</p>
+          <ul class="carrinho__lista" id="lista-carrinho"></ul>
         </div>
 
-        <section class="filtros">
-            <div class="filtros__grade">
-                <div class="filtro">
-                    <h2 class="filtro__titulo">Categorias</h2>
-
-                    <div class="categorias" role="navigation">
-                        <a class="categoria__pill" href="#" data-filtro="Todas">Todas</a>
-                        <a class="categoria__pill" href="#" data-filtro="Mercearia">Mercearia</a>
-                        <a class="categoria__pill" href="#" data-filtro="Laticínios">Laticínios</a>
-                        <a class="categoria__pill" href="#" data-filtro="Doces">Doces</a>
-                        <a class="categoria__pill" href="#" data-filtro="Hortifruti">Hortifruti</a>
-                        <a class="categoria__pill" href="#" data-filtro="Carnes">Carnes</a>
-                        <a class="categoria__pill" href="#" data-filtro="Bebidas">Bebidas</a>
-                        <a class="categoria__pill" href="#" data-filtro="Limpeza">Limpeza</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-<section class="resultados">
-      <div class="lista__produtos" id="lista_produtos">
-        <article class="produto" data-categoria="Mercearia">
-          <div class="produto__top">
-            <span class="etiqueta">Mercearia</span>
-            <div class="produto__marca">Café Pelé</div>
+        <div class="carrinho__rodape">
+          <div class="carrinho__total">
+            <span>Total</span>
+            <strong id="valor-total">R$ 0,00</strong>
           </div>
-
-          <img class="produto__imagem" src="imagens/Mercearia/cafe-pele.webp" alt="Café Pelé" />
-          <h3 class="produto__nome">Café Torrado 500g</h3>
-          <p class="produto__descricao">Sabor intenso e aroma marcante</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 19,99</div>
-            </div>
-            <button class="produto__btn" type="button">Adicionar ao Carrinho</button>
+          <div class="carrinho__acoes">
+            <button type="button" class="carrinho__btn" onclick="limparCarrinho()">Limpar</button>
+            <button type="button" class="carrinho__btn carrinho__btn--primario"
+              onclick="finalizarCompra()">Finalizar</button>
           </div>
-        </article>
+        </div>
+      </div>
+    </div>
 
+    <section class="promo-anuncio">
+      <div class="overlay"></div>
+      <div class="promo-conteudo">
+        <span class="anuncio">OFERTAS DA SEMANA</span>
+        <h1>Até <span>50% OFF</span></h1>
+        <p>Economize mais todos os dias com produtos selecionados para você e sua família.</p>
+      </div>
+
+      <div class="floating">
+        <img src="imagens/cocacola.png" class="cocacola">
+        <img src="imagens/Mercearia/banana-prata.png" class="banana">
+        <img src="imagens/Repelente-Sbp.png" class="repelente">
+        <img src="imagens/dipirona.png" class="dipirona">
+      </div>
+    </section>
+
+    <section class="vitrine">
+
+      <h1>Ofertas da Semana</h1>
+      <hr>
+      <p class="subtitulo">Mercearia</p>
+
+      <button class="btn voltar">&#10094;</button>
+      <div class="produtos">
         <article class="produto" data-categoria="Mercearia">
           <div class="produto__top">
             <span class="etiqueta">Mercearia</span>
@@ -103,30 +77,10 @@ if (session_status() === PHP_SESSION_NONE) {
           </div>
           <img class="produto__imagem" src="imagens/Mercearia/arroz-camil.jpg" alt="Arroz camil" />
           <h3 class="produto__nome">Arroz Tipo 1 5kg</h3>
-          <p class="produto__descricao">
-            Grãos selecionados, ideal para o dia a dia
-          </p>
+          <p class="produto__descricao">Grãos selecionados, ideal para o dia a dia</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco"><s>R$ 20,99</s> R$ 15,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Mercearia">
-          <div class="produto__top">
-            <span class="etiqueta">Mercearia</span>
-            <div class="produto__marca">Kicaldo</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/feijao-kicaldo.webp" alt="Feijão Kicaldo" />
-          <h3 class="produto__nome">Feijão Carioca 1kg</h3>
-          <p class="produto__descricao">Cozimento rápido e sabor caseiro</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 8,39</div>
+              <div class="produto__preco desconto"><s>R$ 20,99</s> R$ 15,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -144,609 +98,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Versátil para receitas e bebidas</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 3,79</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Mercearia">
-          <div class="produto__top">
-            <span class="etiqueta">Mercearia</span>
-            <div class="produto__marca">Adria</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/macarrao-espaguete-adria.jpg"
-            alt="Macarrão Espaguete Adria" />
-          <h3 class="produto__nome">Macarrão Espaguete 500g</h3>
-          <p class="produto__descricao">Durabilidade e textura perfeita</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 5,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Parmalat</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Leite-integral.jpg" alt="Leite Integral" />
-          <h3 class="produto__nome">Leite Integral 1L</h3>
-          <p class="produto__descricao">Fonte de proteína e energia</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 4,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Vigor</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/iogurte-natural.webp" alt="Iogurte Natural" />
-          <h3 class="produto__nome">Iogurte Natural 170g</h3>
-          <p class="produto__descricao">Mais cremosidade, mais sabor</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 3,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Président</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Queijo-mussarela.webp" alt="Queijo Mussarela Président" />
-          <h3 class="produto__nome">Queijo Mussarela 300g</h3>
-          <p class="produto__descricao">Fatiado para suas receitas</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 24,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Frutas</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/banana-prata.png" alt="Banana Prata" />
-          <h3 class="produto__nome">Banana Prata kg</h3>
-          <p class="produto__descricao">Maduras na medida certa</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 7,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Frutas</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Tomate-italiano.webp" alt="Tomate Italiano" />
-          <h3 class="produto__nome">Tomate Italiano kg</h3>
-          <p class="produto__descricao">Vermelho, firme e suculento</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 9,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Verduras</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Alface-Crespa.png" alt="Alface Crespa" />
-          <h3 class="produto__nome">Alface Crespa Unidade</h3>
-          <p class="produto__descricao">Folhas crocantes e frescas</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 5,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Sadia</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Frango-Cubos.png" alt="Frango em Cubos Sadia" />
-          <h3 class="produto__nome">Frango em Cubos 400g</h3>
-          <p class="produto__descricao">Prático para o dia a dia</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 18,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Peixaria</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/file-tilapia.png" alt="Filé de Peixe Tilápia" />
-          <h3 class="produto__nome">Peixe Tilápia Filé 500g</h3>
-          <p class="produto__descricao">Assa, grelha ou cozinha</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 39,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Açougue</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Patinho-moido.png" alt="Patinho Moido" />
-          <h3 class="produto__nome">Patinho Moído 500g</h3>
-          <p class="produto__descricao">Sabor suave e ótimo para receitas</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 29,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Ype</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Detergente-Neutro-Ype.jpg" alt="Detergente Neutro Ype" />
-          <h3 class="produto__nome">Detergente Neutro 500ml</h3>
-          <p class="produto__descricao">Remove gordura com eficiência</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 2,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Omo</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Sabao-Omo.webp" alt="Sabão em Pó Omo" />
-          <h3 class="produto__nome">Sabão em Pó 1kg</h3>
-          <p class="produto__descricao">Roupas limpas e cheiro agradável</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 28,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Asfer</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Alcool-70-Asfer.webp" alt="Álcool 70 1L" />
-          <h3 class="produto__nome">Álcool 70 1L</h3>
-          <p class="produto__descricao">Para higiene e limpeza geral</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 10,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Mercearia">
-          <div class="produto__top">
-            <span class="etiqueta">Mercearia</span>
-            <div class="produto__marca">Cisne</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Sal-Cisne.webp" alt="Sal Cisne 1Kg" />
-          <h3 class="produto__nome">Sal Refinado 1Kg</h3>
-          <p class="produto__descricao">Essencial para temperar</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 2,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Temperos</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/alho.jpg" alt="Alho" />
-          <h3 class="produto__nome">Alho Kg</h3>
-          <p class="produto__descricao">Tempero indispensável</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 1,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Qualy</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Margarina-Qualy.webp" alt="Margarina Qualy 1Kg" />
-          <h3 class="produto__nome">Margarina 1 Kg</h3>
-          <p class="produto__descricao">Leve, prática e cremosa</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 9,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Bombril</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Palha-Bombril.png" alt="Palha de Aço Bombril" />
-          <h3 class="produto__nome">Palha de Aço</h3>
-          <p class="produto__descricao">Brilho para panelas e alumínios</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 6,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Comfort</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Amaciante-Comfort.avif" alt="Amaciante Comfort 500ml" />
-          <h3 class="produto__nome">Amaciante 500ml</h3>
-          <p class="produto__descricao">Roupas macias e perfumadas</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 12,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Sadia</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Nuggets-Sadia.webp" alt="Nuggets Frango Sadia" />
-          <h3 class="produto__nome">Nuggets de Frango 275g</h3>
-          <p class="produto__descricao">Crocante, prático e delicioso</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 14,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Seara</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Bacon-seara.png" alt="Bacon Gourmet Seara" />
-          <h3 class="produto__nome">Bacon em Fatias 250g</h3>
-          <p class="produto__descricao">Defumado, crocante e delicioso</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 29,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Bebidas">
-          <div class="produto__top">
-            <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Coca-Cola</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Coca-Cola-2l.webp" alt="Coca-Cola 2l" />
-          <h3 class="produto__nome">Refrigerante Cola 2L</h3>
-          <p class="produto__descricao">Gelado, clássico e refrescante</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 9,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Bebidas">
-          <div class="produto__top">
-            <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Guaraná Antarctica</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Guarana-Antartica-2l.webp" alt="Guarana Antarctica 2l" />
-          <h3 class="produto__nome">Refrigerante Guaraná 2L</h3>
-          <p class="produto__descricao">Doce, leve e brasileiro</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 7,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Bebidas">
-          <div class="produto__top">
-            <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Del Valle</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Delvalle-Maracuja.webp"
-            alt="Suco Maracujá Del Valle 1L" />
-          <h3 class="produto__nome">Suco de Maracujá 1L</h3>
-          <p class="produto__descricao">Tropical, leve e marcante</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 4,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Doces">
-          <div class="produto__top">
-            <span class="etiqueta">Doces</span>
-            <div class="produto__marca">Oreo</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Bisc-Oreo.jpg" alt="Biscoito Recheado Oreo" />
-          <h3 class="produto__nome">Biscoito Recheado 90g</h3>
-          <p class="produto__descricao">Crocante, doce e recheado</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 3,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Doces">
-          <div class="produto__top">
-            <span class="etiqueta">Doces</span>
-            <div class="produto__marca">Toddy</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Cookie-Toddy.webp" alt="Cookie de Chocolate Toddy" />
-          <h3 class="produto__nome">Cookie Chocolate</h3>
-          <p class="produto__descricao">Crocante, doce e chocolatudo</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 3,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Doces">
-          <div class="produto__top">
-            <span class="etiqueta">Doces</span>
-            <div class="produto__marca">Doritos</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Salg-Doritos.jpg" alt="Salgadinho Doritos" />
-          <h3 class="produto__nome">Salgadinho de Milho 32g</h3>
-          <p class="produto__descricao">Crocante, intenso e marcante</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 9,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Bebidas">
-          <div class="produto__top">
-            <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Monster</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Energetico-Monster.webp" alt="Energético Monster" />
-          <h3 class="produto__nome">Energético 473ml</h3>
-          <p class="produto__descricao">Sabor intenso para mais disposição</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 9,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Legumes</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Cenoura.jpg" alt="Cenoura" />
-          <h3 class="produto__nome">Cenoura kg</h3>
-          <p class="produto__descricao">Colorida, fresca e nutritiva</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 5,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Mercearia">
-          <div class="produto__top">
-            <span class="etiqueta">Mercearia</span>
-            <div class="produto__marca">Pomarola</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Molho-Tomate-Pomarola.png"
-            alt="Molho de Tomate Pomarola" />
-          <h3 class="produto__nome">Molho de Tomate 300g</h3>
-          <p class="produto__descricao">Encorpado para pratos caseiros</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 3,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Doces">
-          <div class="produto__top">
-            <span class="etiqueta">Doces</span>
-            <div class="produto__marca">Fini</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Bala-fini.webp" alt="Bala Fini" />
-          <h3 class="produto__nome">Bala de Gelatina 100g</h3>
-          <p class="produto__descricao">Macia, colorida e cheia de sabor</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 6,49</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Limpeza">
-          <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Veja</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Limpador-veja.webp" alt="Limpador Multiuso Veja" />
-          <h3 class="produto__nome">Limpador Multiuso 500ml</h3>
-          <p class="produto__descricao">
-            Remove sujeiras de várias superfícies
-          </p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 6,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Catupiry</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Requeijao-catupiry.webp" alt="Requeijão Catupiry" />
-          <h3 class="produto__nome">Requeijão Cremoso 200g</h3>
-          <p class="produto__descricao">Textura suave para pães e torradas</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 8,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Seara</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/linguica-toscana-seara.webp"
-            alt="Linguiça Toscana Seara" />
-          <h3 class="produto__nome">Linguiça Toscana 700g</h3>
-          <p class="produto__descricao">
-            Temperada para churrascos e refeições
-          </p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 21,99</div>
+              <div class="produto__preco desconto"><s>R$ 3,79</s> R$3,19</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -766,103 +118,7 @@ if (session_status() === PHP_SESSION_NONE) {
           </p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 6,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Hortifruti">
-          <div class="produto__top">
-            <span class="etiqueta">Hortifruti</span>
-            <div class="produto__marca">Frutas</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/maca-fuji.webp" alt="Maçã Fuji" />
-          <h3 class="produto__nome">Maçã Fuji kg</h3>
-          <p class="produto__descricao">Vermelha, crocante e adocicada</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 10,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Doces">
-          <div class="produto__top">
-            <span class="etiqueta">Doces</span>
-            <div class="produto__marca">Lacta</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Chocolate-Lacta.webp" alt="Chocolate Lacta" />
-          <h3 class="produto__nome">Chocolate ao Leite 90g</h3>
-          <p class="produto__descricao">Derrete na boca com sabor marcante</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 6,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Bebidas">
-          <div class="produto__top">
-            <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Crystal</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/agua-crystal.webp" alt="Água Mineral Crystal" />
-          <h3 class="produto__nome">Água Mineral 1,5L</h3>
-          <p class="produto__descricao">
-            Pura para hidratar a qualquer momento
-          </p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 3,29</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Carnes">
-          <div class="produto__top">
-            <span class="etiqueta">Carnes</span>
-            <div class="produto__marca">Perdigão</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/File-Frango-Perdigao.webp"
-            alt="Filé de Frango Perdigão" />
-          <h3 class="produto__nome">Filé de Frango 1kg</h3>
-          <p class="produto__descricao">
-            Ideal para grelhados e receitas leves
-          </p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 23,99</div>
-            </div>
-            <button class="produto__btn" type="button">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </article>
-
-        <article class="produto" data-categoria="Laticínios">
-          <div class="produto__top">
-            <span class="etiqueta">Laticínios</span>
-            <div class="produto__marca">Philadelphia</div>
-          </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Cream-Cheese-Philadelphia.webp"
-            alt="Cream Cheese Philadelphia" />
-          <h3 class="produto__nome">Cream Cheese 150g</h3>
-          <p class="produto__descricao">Cremoso para lanches especiais</p>
-          <div class="produto__linha-preco">
-            <div>
-              <div class="produto__preco">R$ 12,99</div>
+              <div class="produto__preco desconto"><s>R$ 6,99</s> R$ 5,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -881,28 +137,34 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Base ideal para massas fofinhas</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 5,29</div>
+              <div class="produto__preco"><s>R$ 5,29</s> R$ 4,79</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
             </button>
           </div>
         </article>
+      </div>
+      <button class="btn avancar">&#10095;</button>
+    </section>
 
-        <article class="produto" data-categoria="Limpeza">
+    <section class="vitrine">
+
+      <p class="subtitulo">Bebidas</p>
+
+      <button class="btn voltar">&#10094;</button>
+      <div class="produtos">
+        <article class="produto" data-categoria="Bebidas">
           <div class="produto__top">
-            <span class="etiqueta">Limpeza</span>
-            <div class="produto__marca">Pinho Sol</div>
+            <span class="etiqueta">Bebidas</span>
+            <div class="produto__marca">Coca-Cola</div>
           </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Desinfetante-Pinho-Sol.webp"
-            alt="Desinfetante Pinho Sol" />
-          <h3 class="produto__nome">Desinfetante 1L</h3>
-          <p class="produto__descricao">
-            Perfume agradável com ação de limpeza
-          </p>
+          <img class="produto__imagem" src="imagens/Mercearia/Coca-Cola-2l.webp" alt="Coca-Cola 2l" />
+          <h3 class="produto__nome">Refrigerante Cola 2L</h3>
+          <p class="produto__descricao">Gelado, clássico e refrescante</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 7,49</div>
+              <div class="produto__preco"><s>R$ 9,99</s> R$ 7,79</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -913,16 +175,77 @@ if (session_status() === PHP_SESSION_NONE) {
         <article class="produto" data-categoria="Bebidas">
           <div class="produto__top">
             <span class="etiqueta">Bebidas</span>
-            <div class="produto__marca">Mansão Maromba</div>
+            <div class="produto__marca">Guaraná Antarctica</div>
           </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Whisk-Energetico.jpg" alt="Desinfetante Pinho Sol" />
-          <h3 class="produto__nome">Whisky Combo Maçã Verde</h3>
-          <p class="produto__descricao">
-            Whisky sabor energético... SabOOOr
-          </p>
+          <img class="produto__imagem" src="imagens/Mercearia/Guarana-Antartica-2l.webp" alt="Guarana Antarctica 2l" />
+          <h3 class="produto__nome">Refrigerante Guaraná 2L</h3>
+          <p class="produto__descricao">Doce, leve e brasileiro</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 27,49</div>
+              <div class="produto__preco"><s>R$ 7,99</s> R$ 5,79</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+      </div>
+      <button class="btn avancar">&#10095;</button>
+    </section>
+
+    <section class="vitrine">
+
+      <p class="subtitulo">Hortifruti</p>
+
+      <button class="btn voltar">&#10094;</button>
+      <div class="produtos">
+        <article class="produto" data-categoria="Hortifruti">
+          <div class="produto__top">
+            <span class="etiqueta">Hortifruti</span>
+            <div class="produto__marca">Frutas</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Mercearia/banana-prata.png" alt="Banana Prata" />
+          <h3 class="produto__nome">Banana Prata kg</h3>
+          <p class="produto__descricao">Maduras na medida certa</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 7,49</s> R$ 5,49</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+
+        <article class="produto" data-categoria="Hortifruti">
+          <div class="produto__top">
+            <span class="etiqueta">Hortifruti</span>
+            <div class="produto__marca">Frutas</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Mercearia/maca-fuji.webp" alt="Maçã Fuji" />
+          <h3 class="produto__nome">Maçã Fuji kg</h3>
+          <p class="produto__descricao">Vermelha, crocante e adocicada</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 10,99</s> R$ 8,69</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+
+        <article class="produto" data-categoria="Hortifruti">
+          <div class="produto__top">
+            <span class="etiqueta">Hortifruti</span>
+            <div class="produto__marca">Frutas</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Mercearia/Tomate-italiano.webp" alt="Tomate Italiano" />
+          <h3 class="produto__nome">Tomate Italiano kg</h3>
+          <p class="produto__descricao">Vermelho, firme e suculento</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 9,49</s> R$ 8,79</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -935,12 +258,12 @@ if (session_status() === PHP_SESSION_NONE) {
             <span class="etiqueta">Hortifruti</span>
             <div class="produto__marca">Legumes</div>
           </div>
-          <img class="produto__imagem" src="imagens/Mercearia/Batata-Inglesa.webp" alt="Batata Inglesa" />
-          <h3 class="produto__nome">Batata Inglesa kg</h3>
-          <p class="produto__descricao">Boa para assar, cozinhar ou fritar</p>
+          <img class="produto__imagem" src="imagens/Mercearia/Cenoura.jpg" alt="Cenoura" />
+          <h3 class="produto__nome">Cenoura kg</h3>
+          <p class="produto__descricao">Colorida, fresca e nutritiva</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 6,49</div>
+              <div class="produto__preco"><s>R$ 5,99</s> R$ 4,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -948,32 +271,117 @@ if (session_status() === PHP_SESSION_NONE) {
           </div>
         </article>
       </div>
+      <button class="btn avancar">&#10095;</button>
     </section>
-    </main>
 
-    <footer class="rodape">
-        <div class="rodape__conteudo">
-            <div class="rodape__coluna">
-                <h2 class="rodape__logo">SuperClick</h2>
-                <p class="rodape__texto">Qualidade, economia e praticidade para sua casa, com produtos de mercado e
-                    drogaria em um só lugar.</p>
+    <section class="promo-anuncio2"></section>
+
+      <section class="vitrine">
+
+        <p class="subtitulo">Drogaria</p>
+
+        <button class="btn voltar">&#10094;</button>
+        <div class="produtos">
+                  <article class="produto" data-categoria="Medicamentos">
+          <div class="produto__top">
+            <span class="etiqueta">Medicamentos</span>
+            <div class="produto__marca">Prati</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/dipirona.webp" alt="Dipirona Monoidratada" />
+          <h3 class="produto__nome">Dipirona Monoidratada 1g</h3>
+          <p class="produto__descricao">Analgésico (para dor) e antitérmico (para febre)</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 19,70</s> R$ 15,99</div>
             </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
 
-            <div class="rodape__coluna">
-                <h3 class="rodape__titulo">Localização</h3>
-                <p>Rua Exemplo, 123 - Centro</p>
-                <p>Segunda a sábado: 08h às 20h</p>
-                <p>Domingo: 08h às 13h</p>
+        <article class="produto" data-categoria="Higiene Pessoal">
+          <div class="produto__top">
+            <span class="etiqueta">Higiene Pessoal</span>
+            <div class="produto__marca">Rexona</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/Desodorante-Rexona.jpg" alt="Desodorante Rexona" />
+          <h3 class="produto__nome">Desodorante Aerosol 150ml</h3>
+          <p class="produto__descricao">Proteção para a rotina do dia</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 13,49</s> R$ 10,99</div>
             </div>
-        </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
 
-        <div class="rodape__baixo">
-            <p>&copy; 2026 SuperClick Supermercado. Todos os direitos reservados.</p>
-            <p>Projeto desenvolvido para fins acadêmicos.</p>
-        </div>
-    </footer>
+        <article class="produto" data-categoria="Cabelos">
+          <div class="produto__top">
+            <span class="etiqueta">Cabelos</span>
+            <div class="produto__marca">Seda</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/Creme-Pentear-Seda.webp" alt="Creme de Pentear Seda" />
+          <h3 class="produto__nome">Creme de Pentear 300ml</h3>
+          <p class="produto__descricao">Ajuda a desembaraçar e modelar</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 10,99</s> R$ 8,99</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
 
-    <script src="script.js"></script>
+        <article class="produto" data-categoria="Cabelos">
+          <div class="produto__top">
+            <span class="etiqueta">Cabelos</span>
+            <div class="produto__marca">Salon Line</div>
+          </div>
+          <img class="produto__imagem" src="imagens/Drogaria/Shampoo-salon-line.png" alt="Shampoo Salon Line" />
+          <h3 class="produto__nome">Shampoo 300ml</h3>
+          <p class="produto__descricao">Cuidado especial para os cabelos</p>
+          <div class="produto__linha-preco">
+            <div>
+              <div class="produto__preco"><s>R$ 12,99</s> R$ 9,99</div>
+            </div>
+            <button class="produto__btn" type="button">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </article>
+        </div>
+        <button class="btn avancar">&#10095;</button>
+      </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape__conteudo">
+      <div class="rodape__coluna">
+        <h2 class="rodape__logo">SuperClick</h2>
+        <p class="rodape__texto">Qualidade, economia e praticidade para sua casa, com produtos de mercado e
+          drogaria em um só lugar.</p>
+      </div>
+
+      <div class="rodape__coluna">
+        <h3 class="rodape__titulo">Localização</h3>
+        <p>Rua Exemplo, 123 - Centro</p>
+        <p>Segunda a sábado: 08h às 20h</p>
+        <p>Domingo: 08h às 13h</p>
+      </div>
+    </div>
+
+    <div class="rodape__baixo">
+      <p>&copy; 2026 SuperClick Supermercado. Todos os direitos reservados.</p>
+      <p>Projeto desenvolvido para fins acadêmicos.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
     cards.forEach((card) => {
       const categoria = card.getAttribute("data-categoria");
       const nome = normalizar(card.querySelector(".produto__nome")?.innerText);
-      const marca = normalizar(card.querySelector(".produto__marca")?.innerText,);
+      const marca = normalizar(
+        card.querySelector(".produto__marca")?.innerText,
+      );
 
       const atendeCategoria =
         filtroCategoriaAtual === "Todas" || filtroCategoriaAtual === categoria;
@@ -139,6 +141,15 @@ function desenharCarrinho() {
 }
 
 function adicionarProduto(nome, marca, precoTexto) {
+  // Verifica se o usuário está logado antes de adicionar ao carrinho
+  if (!window.usuarioLogado) {
+    mostrarToast("Faça login para adicionar itens ao carrinho");
+    setTimeout(() => {
+      window.location.href = "login.php";
+    }, 1700);
+    return;
+  }
+
   let precoLimpo = precoTexto.replace("R$", "").replace(",", ".");
   let preco = parseFloat(precoLimpo);
 
@@ -241,7 +252,7 @@ carregarCarrinho();
     });
   }
 
-  // Botão de fechar 
+  // Botão de fechar
   const btnFechar = document.getElementById("carrinho__fechar");
   if (btnFechar) {
     btnFechar.addEventListener("click", () => fecharCarrinho());
@@ -332,4 +343,106 @@ function VerificaSenha() {
   if (senha !== confirmar) {
     alert("Confirmação de senha incorreta");
   }
+}
+
+document.querySelectorAll(".vitrine").forEach((vitrine) => {
+  const produtos = vitrine.querySelector(".produtos");
+  const btnAvancar = vitrine.querySelector(".avancar");
+  const btnVoltar = vitrine.querySelector(".voltar");
+
+  btnAvancar.addEventListener("click", () => {
+    produtos.scrollBy({
+      left: 330,
+      behavior: "smooth",
+    });
+  });
+
+  btnVoltar.addEventListener("click", () => {
+    produtos.scrollBy({
+      left: -330,
+      behavior: "smooth",
+    });
+  });
+});
+
+// Preenchimento automático do endereço
+const inputCep = document.getElementById("cep");
+
+  inputCep.addEventListener("blur", function () {
+    let cep = inputCep.value;
+
+    // Remove tudo que não for número
+    cep = cep.replace(/\D/g, "");
+
+    // Verifica se tem exatamente 8 números
+    if (cep.length !== 8) {
+      alert("CEP inválido. Digite 8 números.");
+      return;
+    }
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(function (resposta) {
+        return resposta.json();
+      })
+      .then(function (dados) {
+        if (dados.erro) {
+          alert("CEP não encontrado.");
+          return;
+        }
+
+        document.getElementById("rua").value = dados.logradouro;
+        document.getElementById("bairro").value = dados.bairro;
+        document.getElementById("cidade").value = dados.localidade;
+        document.getElementById("estado").value = dados.uf;
+      })
+      .catch(function () {
+        alert("Erro ao buscar o CEP.");
+      });
+  });
+
+
+// MÁSCARA DE CPF
+const cpf = document.getElementById("cpf");
+if (cpf) {
+    cpf.addEventListener("input", function () {
+        let valor = this.value.replace(/\D/g, "");
+        valor = valor.substring(0, 11);
+        valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+        valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+        this.value = valor;
+    });
+
+}
+
+// MÁSCARA DE CEP
+const cep = document.getElementById("cep");
+if (cep) {
+    cep.addEventListener("input", function () {
+        let valor = this.value.replace(/\D/g, "");
+        valor = valor.substring(0, 8);
+        valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+        this.value = valor;
+    });
+}
+
+// MÁSCARA DE TELEFONE
+const telefone = document.getElementById("telefone");
+if (telefone) {
+    telefone.addEventListener("input", function () {
+        let valor = this.value.replace(/\D/g, "");
+        valor = valor.substring(0, 11);
+        if (valor.length <= 10) {
+            // Telefone fixo
+            valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+            valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+        } else {
+            // Celular
+            valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+            valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+        }
+        this.value = valor;
+
+    });
+
 }

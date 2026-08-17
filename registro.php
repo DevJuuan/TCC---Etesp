@@ -19,7 +19,7 @@ unset($_SESSION['registro_erro']);
 <body>
     <header class="cabecalho">
         <div class="container cabecalho__interno">
-            <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+            <a href="index.php"><img class="cabecalho__logo" src="imagens/lg.png" alt="" /></a>
             <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
                 ☰
             </button>
@@ -32,8 +32,8 @@ unset($_SESSION['registro_erro']);
             </nav>
 
             <div class="cabecalho__auth">
-                <a class="botao botao--primario" href="login.php">Login</a>
-                <a class="botao botao--secundario" href="registro.php">Registro</a>
+                <a class="botao botao--primario" href="login.php">Entrar</a>
+                <a class="botao botao--secundario" href="registro.php">Registrar</a>
                 <button class="botao" type="button" id="carrinho__abrir" aria-label="Abrir carrinho">🛒</button>
             </div>
 
@@ -91,7 +91,7 @@ unset($_SESSION['registro_erro']);
 
                     echo "<div class='contato__campo'>";
                     echo "<label for='cpf'>CPF</label>";
-                    echo "<input type='number' id='cpf' name='cpf' placeholder='Digite seu CPF' required />";
+                    echo "<input type='text' id='cpf' name='cpf' maxlength='14' placeholder='000.000.000-00' required />";
                     echo "</div>";
 
                     echo "<div class='contato__campo'>";
@@ -100,13 +100,43 @@ unset($_SESSION['registro_erro']);
                     echo "</div>";
 
                     echo "<div class='contato__campo'>";
-                    echo "<label for='endereco'>Endereço</label>";
-                    echo "<input type='text' id='endereco' name='endereco' placeholder='Digite seu endereço' required />";
+                    echo "<label for='cep'>CEP</label>";
+                    echo "<input type='text' id='cep' name='cep' maxlength='9' placeholder='00000-000' required/>";
+                    echo "</div>";
+                    
+                    echo "<div class='contato__campo'>";
+                    echo "<label for='cidade'>Cidade</label>";
+                    echo "<input type='text' id='cidade' name='cidade'/>";
                     echo "</div>";
 
                     echo "<div class='contato__campo'>";
+                    echo "<label for='estado'>Estado</label>";
+                    echo "<input type='text' id='estado' name='estado'/>";
+                    echo "</div>";
+
+                    echo "<div class='contato__campo'>";
+                    echo "<label for='bairro'>Bairro</label>";
+                    echo "<input type='text' id='bairro' name='bairro'/>";
+                    echo "</div>";
+
+                    echo "<div class='contato__campo'>";
+                    echo "<label for='rua'>Rua</label>";
+                    echo "<input type='text' id='rua' name='rua'/>";
+                    echo "</div>";  
+                    
+                    echo "<div class='contato__campo'>";
+                    echo "<label for='numero'>Número</label>";
+                    echo "<input type='text' id='numero' name='numero' placeholder='Digite o número de sua casa' required/>";
+                    echo "</div>";  
+
+                    echo "<div class='contato__campo'>";
+                    echo "<label for='complemento'>Complemento</label>";
+                    echo "<input type='text' id='complemento' name='complemento' placeholder='Digite o complemento'/>";
+                    echo "</div>";
+                    
+                    echo "<div class='contato__campo'>";
                     echo "<label for='telefone'>Telefone</label>";
-                    echo "<input type='number' id='telefone' name='telefone' placeholder='Digite seu telefone' required />";
+                    echo "<input type='text' id='telefone' name='telefone' maxlength='15' placeholder='(00) 00000-0000' required />";
                     echo "</div>";
 
                     echo "<div class='contato__campo'>";
