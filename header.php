@@ -15,20 +15,23 @@ if ($logado) {
   $botaoLogin = '';
   $botaoRegistro = '';
   $nomeEscapado = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
-  $botaoUser = '<a class="botao" href="dados.php"  style=text-decoration:none;>' . $nomeEscapado. '</a>';
+  $botaoUser = '<a class="botao" href="dados.php"  style=text-decoration:none;>' . $nomeEscapado . '</a>';
 
 }
+
 ?>
+<script>window.usuarioLogado = <?php echo $logado ? 'true' : 'false'; ?>;</script>
+
 
 <header class="cabecalho">
   <div class="container cabecalho__interno">
-    <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+    <a href="index.php"><img class="cabecalho__logo" src="imagens/lg.png" alt="" /></a>
     <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
       ☰
     </button>
 
     <nav class="cabecalho__navegacao">
-      <a class="cabecalho__link" href="index.php">Mercearia</a>
+      <a class="cabecalho__link" href="mercearia.php">Mercearia</a>
       <a class="cabecalho__link" href="drogaria.php">Drogaria</a>
       <a class="cabecalho__link" href="sobre.php">Sobre Nós</a>
       <a class="cabecalho__link" href="contato.php">Contato</a>
@@ -39,7 +42,7 @@ if ($logado) {
       <?php echo $botaoRegistro; ?>
       <?php echo $botaoUser; ?>
       <?php if ($logado) { ?>
-        <a class="botao" href="logout.php" style="text-decoration:none;">Sair</a>
+        <a class="botao--sair" href="logout.php" style="text-decoration:none;" onclick="limparCarrinho();">Sair</a>
 
       <?php } ?>
       <button class="botao" type="button" id="carrinho__abrir" aria-label="Abrir carrinho">🛒</button>
@@ -64,7 +67,7 @@ if ($logado) {
             <a class="menu-mobile__link" href="registro.php">Registrar</a>
           <?php } ?>
 
-          <a class="menu-mobile__link" href="index.php">Mercearia</a>
+          <a class="menu-mobile__link" href="mercearia.php">Mercearia</a>
           <a class="menu-mobile__link" href="drogaria.php">Drogaria</a>
           <a class="menu-mobile__link" href="contato.php">Contato</a>
           <a class="menu-mobile__link" href="sobre.php">Sobre Nós</a>

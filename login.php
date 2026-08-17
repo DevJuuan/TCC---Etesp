@@ -43,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 
             // Login com sucesso
             $_SESSION['logado'] = true;
-            $_SESSION['id_cliente'] = $usuario['id'];
+            $_SESSION['id_cliente'] = $usuario['Id_Cliente'];
             $_SESSION['nome_cliente'] = $usuario['Nome'];
+            $_SESSION['email_cliente'] = $usuario['Email'];
 
             header("Location: index.php");
             exit;
@@ -72,21 +73,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 <body>
     <header class="cabecalho">
         <div class="container cabecalho__interno">
-            <img class="cabecalho__logo" src="imagens/lg.png" alt="" />
+            <a href="index.php"><img class="cabecalho__logo" src="imagens/lg.png" alt="" /></a>
             <button class="cabecalho__hamburguer" type="button" id="menu-hamburguer" aria-label="Abrir menu">
                 ☰
             </button>
 
             <nav class="cabecalho__navegacao">
-                <a class="cabecalho__link" href="index.php">Mercearia</a>
+                <a class="cabecalho__link" href="mercearia.php">Mercearia</a>
                 <a class="cabecalho__link" href="drogaria.php">Drogaria</a>
                 <a class="cabecalho__link" href="sobre.php">Sobre Nós</a>
                 <a class="cabecalho__link" href="contato.php">Contato</a>
             </nav>
 
             <div class="cabecalho__auth">
-                <a class="botao botao--primario" href="login.php">Login</a>
-                <a class="botao botao--secundario" href="registro.php">Registro</a>
+                <a class="botao botao--primario" href="login.php">Entrar</a>
+                <a class="botao botao--secundario" href="registro.php">Registrar</a>
                 <button class="botao" type="button" id="carrinho__abrir" aria-label="Abrir carrinho">🛒</button>
             </div>
             <!-- Menu mobile -->

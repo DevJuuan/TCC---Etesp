@@ -163,7 +163,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Analgésico (para dor) e antitérmico (para febre)</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 19,70</div>
+              <div class="produto__preco"><s>R$ 19,70</s> R$ 15,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -222,7 +222,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Proteção para a rotina do dia</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 13,49</div>
+              <div class="produto__preco"><s>R$ 13,49</s> R$ 10,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -279,7 +279,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Ajuda a desembaraçar e modelar</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 10,99</div>
+              <div class="produto__preco"><s>R$ 10,99</s> R$ 8,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
@@ -374,7 +374,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <p class="produto__descricao">Cuidado especial para os cabelos</p>
           <div class="produto__linha-preco">
             <div>
-              <div class="produto__preco">R$ 12,99</div>
+              <div class="produto__preco"><s>R$ 12,99</s> R$ 9,99</div>
             </div>
             <button class="produto__btn" type="button">
               Adicionar ao Carrinho
