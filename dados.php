@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualiz
     $estado = trim($_POST['estado'] ?? '');
     $complemento = trim($_POST['complemento'] ?? '');
     $telefone = preg_replace('/\D/', '', $_POST['telefone'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
+    $senha = $_POST['senha'] ?? '';
 
     if ($id_cliente > 0 && !empty($nome)) {
         try {
@@ -55,7 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualiz
                      CEP = :cep, Rua = :rua, Numero = :numero, Bairro = :bairro, Cidade = :cidade, Estado =:estado, Complemento =:complemento, Telefone = :telefone, Senha = :senha
                      WHERE Id_Cliente = :id"
                 );
-                $sqlUpdate->bindValue(":senha", $senha);
+                $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+                if ($senhaHash === false) {
+                    throw new Exception("Não foi possível proteger a nova senha.");
+                }
+
+                $sqlUpdate->bindValue(":senha", $senhaHash);
             } else {
                 $sqlUpdate = $pdo->prepare(
                     "UPDATE Cliente SET Nome = :nome, CPF = :cpf, Email = :email,
@@ -145,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['acao'])) {
 
     // Captura de dados usando trim() para remover espaços vazios acidentais
     $email = trim($_POST['email'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
+    $senha = $_POST['senha'] ?? '';
     $nome = trim($_POST['nome'] ?? '');
     $cpf = trim($_POST['cpf'] ?? '');
     $cep = trim($_POST['cep'] ?? '');
@@ -170,7 +176,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['acao'])) {
         ':cidade' => $cidade,
         ':estado' => $estado,
         ':complemento' => $complemento,
-        ':senha' => $senha,
         'telefone' => $telefone,
         'mensagem' => $mensagem,
     ];
@@ -196,6 +201,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['acao'])) {
             exit;
         }
 
+        // Gera um hash seguro da senha antes de salvar no banco.
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+        if ($senhaHash === false) {
+            $_SESSION['registro_erro'] = "Não foi possível proteger a senha.";
+            header('Location: registro.php');
+            exit;
+        }
+
         // Insere novo cliente
         $sqlInsert = $pdo->prepare("INSERT INTO " . $tabela . " (Nome, CPF, Email, CEP, Rua, Numero, Bairro, Cidade, Estado, Complemento, Telefone, Senha) VALUES (:nome, :cpf, :email, :cep, :rua, :numero, :bairro, :cidade, :estado, :complemento, :telefone, :senha)");
 
@@ -210,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['acao'])) {
         $sqlInsert->bindValue(":estado", $estado);
         $sqlInsert->bindValue(":complemento", $complemento);
         $sqlInsert->bindValue(":telefone", $telefone);
-        $sqlInsert->bindValue(":senha", $senha);
+        $sqlInsert->bindValue(":senha", $senhaHash);
 
         $sqlInsert->execute();
 

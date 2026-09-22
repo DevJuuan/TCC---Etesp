@@ -7,7 +7,7 @@ $mensagem_erro = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
 
     $email_digitado = trim($_POST['email']);
-    $senha_digitada = trim($_POST['password']);
+    $senha_digitada = $_POST['password'];
 
     // Função de conexão 
     function conectar()
@@ -38,10 +38,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
         // Pega o resultado se existir
         $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 
-        // Verifica se o usuário existe e se a senha bate com a do banco
-        if ($usuario && $senha_digitada === $usuario['Senha']) {
+        // Verifica a senha usando o hash salvo no banco.
+        $senhaValida = false;
+
+        if ($usuario) {
+            $senhaBanco = (string) ($usuario['Senha'] ?? '');
+
+            // Usuários novos: senha armazenada com password_hash().
+            if (password_verify($senha_digitada, $senhaBanco)) {
+                $senhaValida = true;
+
+                // Atualiza o hash automaticamente caso o algoritmo/configuração mude no futuro.
+                if (password_needs_rehash($senhaBanco, PASSWORD_DEFAULT)) {
+                    $novoHash = password_hash($senha_digitada, PASSWORD_DEFAULT);
+
+                    if ($novoHash !== false) {
+                        $sqlRehash = $pdo->prepare(
+                            "UPDATE Cliente SET Senha = :senha WHERE Id_Cliente = :id"
+                        );
+                        $sqlRehash->bindValue(":senha", $novoHash);
+                        $sqlRehash->bindValue(":id", $usuario['Id_Cliente'], PDO::PARAM_INT);
+                        $sqlRehash->execute();
+                    }
+                }
+
+            // Compatibilidade com usuários antigos que ainda têm senha em texto puro.
+            } elseif (hash_equals($senhaBanco, $senha_digitada)) {
+                $senhaValida = true;
+
+                // Converte automaticamente a senha antiga para hash após o primeiro login.
+                $novoHash = password_hash($senha_digitada, PASSWORD_DEFAULT);
+
+                if ($novoHash !== false) {
+                    $sqlMigrarSenha = $pdo->prepare(
+                        "UPDATE Cliente SET Senha = :senha WHERE Id_Cliente = :id"
+                    );
+                    $sqlMigrarSenha->bindValue(":senha", $novoHash);
+                    $sqlMigrarSenha->bindValue(":id", $usuario['Id_Cliente'], PDO::PARAM_INT);
+                    $sqlMigrarSenha->execute();
+                }
+            }
+        }
+
+        if ($usuario && $senhaValida) {
 
             // Login com sucesso
+            session_regenerate_id(true);
+
             $_SESSION['logado'] = true;
             $_SESSION['id_cliente'] = $usuario['Id_Cliente'];
             $_SESSION['nome_cliente'] = $usuario['Nome'];
