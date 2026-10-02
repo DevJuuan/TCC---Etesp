@@ -375,6 +375,89 @@ try {
     <link rel="stylesheet" href="styles.css" />
 
     <style>
+        .perfil__layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+            margin-top: 24px;
+        }
+
+        .perfil__menu {
+            position: sticky;
+            top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid var(--borda);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        .perfil__menu-titulo {
+            margin: 4px 8px 8px;
+            font-size: 14px;
+            color: var(--texto2);
+        }
+
+        .perfil__menu-btn {
+            width: 100%;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--texto);
+            padding: 12px 14px;
+            text-align: left;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .perfil__menu-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .perfil__menu-btn.ativo {
+            background: var(--cor1);
+            color: #ffffff;
+        }
+
+        .perfil__conteudo {
+            min-width: 0;
+        }
+
+        .perfil__painel {
+            display: none;
+        }
+
+        .perfil__painel.ativo {
+            display: block;
+        }
+
+        @media (max-width: 800px) {
+            .perfil__layout {
+                grid-template-columns: 1fr;
+            }
+
+            .perfil__menu {
+                position: static;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .perfil__menu-titulo {
+                display: none;
+            }
+
+            .perfil__menu-btn {
+                width: auto;
+                white-space: nowrap;
+            }
+        }
+
         .pedido__toggle {
             display: inline-flex;
             align-items: center;
@@ -490,10 +573,24 @@ try {
             <div class="alerta-sucesso"><?php echo htmlspecialchars($mensagem_perfil, ENT_QUOTES, 'UTF-8'); ?></div>
         <?php } ?>
 
-        <section class="perfil__grade">
+        <section class="perfil__layout">
 
-            <!-- Cartão de dados cadastrais -->
-            <div class="filtro perfil__card">
+            <aside class="perfil__menu" aria-label="Menu do perfil">
+                <span class="perfil__menu-titulo">Minha conta</span>
+
+                <button type="button" class="perfil__menu-btn ativo" data-painel="dados">
+                    Meus Dados
+                </button>
+
+                <button type="button" class="perfil__menu-btn" data-painel="historico">
+                    Histórico de Compras
+                </button>
+            </aside>
+
+            <div class="perfil__conteudo">
+
+                <!-- Cartão de dados cadastrais -->
+                <div id="painel-dados" class="filtro perfil__card perfil__painel ativo">
                 <div class="perfil__cabecalho">
                     <h2 class="filtro__titulo">Meus Dados</h2>
                 </div>
@@ -585,7 +682,7 @@ try {
             </div>
 
             <!-- Cartão de histórico de compras -->
-            <div class="filtro perfil__card">
+            <div id="painel-historico" class="filtro perfil__card perfil__painel">
                 <div class="perfil__cabecalho">
                     <h2 class="filtro__titulo">Histórico de Compras</h2>
                     <span class="perfil__total">Total gasto: <strong>R$
@@ -743,6 +840,26 @@ try {
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const botoesMenu = document.querySelectorAll('.perfil__menu-btn');
+            const paineis = document.querySelectorAll('.perfil__painel');
+
+            botoesMenu.forEach(function (botao) {
+                botao.addEventListener('click', function () {
+                    const painelAlvo = botao.getAttribute('data-painel');
+
+                    botoesMenu.forEach(function (item) {
+                        item.classList.toggle('ativo', item === botao);
+                    });
+
+                    paineis.forEach(function (painel) {
+                        painel.classList.toggle(
+                            'ativo',
+                            painel.id === 'painel-' + painelAlvo
+                        );
+                    });
+                });
+            });
+
             const botoesPedido = document.querySelectorAll('.pedido__toggle');
 
             botoesPedido.forEach(function (botao) {

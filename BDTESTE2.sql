@@ -17,10 +17,8 @@ CREATE TABLE Cliente (
 	Estado VARCHAR(2),
 	Complemento VARCHAR(100),
     Telefone VARCHAR(20),
-	Senha VARCHAR(100)
+	Senha VARCHAR(255)
 );
-
-
 
 CREATE TABLE Contato(
     Id_Contato INT PRIMARY KEY IDENTITY(1,1),
@@ -34,7 +32,7 @@ CREATE TABLE Funcionario (
     Nome VARCHAR(100),
     Cargo VARCHAR(50),
 	CPF VARCHAR (11) UNIQUE,
-    Senha VARCHAR(100),
+    Senha VARCHAR(255),
     Ativo BIT
 );
 
@@ -173,3 +171,6 @@ SELECT * FROM Funcionario;
 SELECT * FROM Categoria;
 SELECT * FROM Pedido;
 SELECT * FROM Pedido_Item;
+
+
+INSERT INTO Funcionario VALUES (1, 'Admin', 'Administrador', 11111111111, 1, 1234);

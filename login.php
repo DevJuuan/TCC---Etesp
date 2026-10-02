@@ -192,6 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
                     echo "</div>";
 
                     echo "<div class='auth__acoes auth__acoes--registro'>";
+                    echo "<button class='botao botao--primario'>Esqueci minha senha</button>";
                     echo "<button class='botao botao--secundario' type='submit'>Entrar</button>";
                     echo "</div>";
 
